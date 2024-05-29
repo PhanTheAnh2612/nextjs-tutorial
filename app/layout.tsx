@@ -1,6 +1,7 @@
 import React from "react";
 import { ClerkProvider, SignInButton, SignedOut } from "@clerk/nextjs";
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeProvider";
 export default function RootLayout({
   children,
 }: {
@@ -13,7 +14,7 @@ export default function RootLayout({
           <SignedOut>
             <SignInButton />
           </SignedOut>
-          {children}
+          <ThemeProvider>{children}</ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
