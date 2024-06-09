@@ -1,9 +1,11 @@
 import React from "react";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, SignInButton, SignedOut } from "@clerk/nextjs";
 import { Inter, Space_Grotesk } from "next/font/google";
 import type { Metadata } from "next";
 
 import "./globals.css";
+
+import { ThemeProvider } from "@/context/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +26,6 @@ export const metadata: Metadata = {
     icon: "/assets/images/site-logo.svg",
   },
 };
-
 export default function RootLayout({
   children,
 }: {
@@ -41,8 +42,10 @@ export default function RootLayout({
     >
       <html lang="en">
         <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-          <h1 className="h1-bold">This is piece of cake</h1>
-          {children}
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <ThemeProvider>{children}</ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
