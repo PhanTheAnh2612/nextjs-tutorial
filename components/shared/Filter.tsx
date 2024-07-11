@@ -33,7 +33,11 @@ function Filter({ filters, otherClasses, containerClasses }: Props) {
         <SelectContent>
           <SelectGroup>
             {filters.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem
+                key={item.value}
+                value={item.value}
+                onChange={() => {}}
+              >
                 {item.name}{" "}
               </SelectItem>
             ))}
